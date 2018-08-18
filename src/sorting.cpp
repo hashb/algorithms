@@ -7,6 +7,8 @@
 #include "sorting.hpp"
 #include <queue>
 
+/* Merge Sort */
+
 void skiena::merge(std::vector<int> &arr, int low, int mid, int high) {
     std::queue<int> buffer1, buffer2;
 
@@ -34,7 +36,6 @@ void skiena::merge(std::vector<int> &arr, int low, int mid, int high) {
         arr[i++] = buffer2.front();
         buffer2.pop();
     }
-
 }
 
 void skiena::merge_sort(std::vector<int> &arr, int low, int high) {
@@ -46,15 +47,54 @@ void skiena::merge_sort(std::vector<int> &arr, int low, int high) {
     }
 }
 
+int skiena::partition(std::vector<int> &arr, int low, int high) {
+    int part = high;
+    int pivot = arr[part];
+
+    int first_high = low;
+
+    for (int i=low; i<high; i++) {
+        if (arr[i] < pivot) {
+            std::swap(arr[i], arr[first_high]);
+            first_high++;
+        }
+    }
+
+    std::swap(arr[part], arr[first_high]);
+    return first_high;
+}
+
+void skiena::quick_sort(std::vector<int> &arr, int low, int high) {
+    if (low < high) {
+        int p = skiena::partition(arr, low, high);
+        quick_sort(arr, low, p-1);
+        quick_sort(arr, p+1, high);
+    }
+}
+
 int main() {
-    std::vector<int> test_arr = {9,8,7,6,5,4,3,2,1};
+    // Merge Sort
+    std::vector<int> merge_sort_arr = {9,8,7,6,5,4,3,2,1};
 
-    for (int i:test_arr) std::cout << i << " ";
-    std::cout << " size:" << test_arr.size() << std::endl;
+    std::cout << "Merge Sort: \n";
+    for (int i:merge_sort_arr) std::cout << i << " ";
+    std::cout << " size:" << merge_sort_arr.size() << std::endl;
 
-    skiena::merge_sort(test_arr, 0, test_arr.size());
+    skiena::merge_sort(merge_sort_arr, 0, merge_sort_arr.size());
 
-    for (int i:test_arr) std::cout << i << " ";
+    for (int i:merge_sort_arr) std::cout << i << " ";
+    std::cout << std::endl;
+
+    // Quicksort
+    std::vector<int> quick_sort_arr = {9,8,7,6,5,4,3,2,1};
+
+    std::cout << "Quick Sort: \n";
+    for (int i:quick_sort_arr) std::cout << i << " ";
+    std::cout << " size:" << quick_sort_arr.size() << std::endl;
+
+    skiena::quick_sort(quick_sort_arr, 0, quick_sort_arr.size()-1);
+
+    for (int i:quick_sort_arr) std::cout << i << " ";
     std::cout << std::endl;
 
     return 0;
