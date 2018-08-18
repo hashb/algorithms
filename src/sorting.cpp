@@ -6,6 +6,23 @@
 */
 #include "sorting.hpp"
 #include <queue>
+#include <algorithm>
+
+/* Heap Sort */
+void skiena::heap_sort(std::vector<int> &arr) {
+    std::priority_queue<int, 
+                        std::vector<int>, 
+                        std::greater<int>> q;
+    
+    for (int i:arr) q.push(i);
+
+    int i = 0;
+    while (!q.empty()) {
+        arr[i] = q.top();
+        q.pop();
+        i++;
+    }
+}
 
 /* Merge Sort */
 
@@ -47,6 +64,8 @@ void skiena::merge_sort(std::vector<int> &arr, int low, int high) {
     }
 }
 
+/* Quick Sort */
+
 int skiena::partition(std::vector<int> &arr, int low, int high) {
     int part = high;
     int pivot = arr[part];
@@ -73,6 +92,18 @@ void skiena::quick_sort(std::vector<int> &arr, int low, int high) {
 }
 
 int main() {
+    // Heap Sort
+    std::vector<int> heap_sort_arr = {9,8,7,6,5,4,3,2,1};
+
+    std::cout << "heap Sort: \n";
+    for (int i:heap_sort_arr) std::cout << i << " ";
+    std::cout << " size:" << heap_sort_arr.size() << std::endl;
+
+    skiena::heap_sort(heap_sort_arr);
+
+    for (int i:heap_sort_arr) std::cout << i << " ";
+    std::cout << std::endl;
+
     // Merge Sort
     std::vector<int> merge_sort_arr = {9,8,7,6,5,4,3,2,1};
 
@@ -80,7 +111,7 @@ int main() {
     for (int i:merge_sort_arr) std::cout << i << " ";
     std::cout << " size:" << merge_sort_arr.size() << std::endl;
 
-    skiena::merge_sort(merge_sort_arr, 0, merge_sort_arr.size());
+    skiena::merge_sort(merge_sort_arr, 0, merge_sort_arr.size()-1);
 
     for (int i:merge_sort_arr) std::cout << i << " ";
     std::cout << std::endl;
