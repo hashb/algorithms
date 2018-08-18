@@ -147,3 +147,6 @@ CTestTestfile.cmake
 *.exe
 *.out
 *.app
+
+# vscode
+.vscode/
