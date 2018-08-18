@@ -1,3 +1,7 @@
 #include <vector>
 #include <iostream>
 
+namespace skiena {
+    void merge(std::vector<int> &arr, int low, int mid, int high);
+    void merge_sort(std::vector<int> &arr, int low, int high); 
+}
