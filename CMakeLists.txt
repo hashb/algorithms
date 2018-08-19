@@ -10,3 +10,4 @@ include_directories(include)
 
 add_executable(sorting ./src/sorting.cpp)
 add_executable(searching ./src/searching.cpp)
+add_executable(graphs ./src/graphs.cpp)
