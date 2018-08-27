@@ -4,8 +4,12 @@
 #include <vector>
 #include <memory>
 
-struct Node {
-    int val;
-    int weight;
-    std::unique_ptr<Node> children;
-};
+namespace skiena {
+    struct Node {
+        int val;
+        int weight;
+        std::unique_ptr<Node> children;
+    };
+}
+
+
