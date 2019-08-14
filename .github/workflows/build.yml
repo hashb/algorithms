@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: setup
-      run: mkdir build; cd build
+      run: mkdir build && cd build
     - name: debug
       run: ls -lah
     - name: cmake
