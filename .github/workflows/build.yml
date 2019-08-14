@@ -10,17 +10,17 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: setup
-      run: mkdir build && cd build
+      run: mkdir build
     - name: debug
-      run: ls -lah
+      run: pwd && cd build && pwd && ls -lah
     - name: cmake
-      run: cmake ..
+      run: cd build && cmake ..
     - name: make
       run: make
     - name: Run sorting
-      run: ./sorting
+      run: cd build && ./sorting
     - name: Run searching
-      run: ./searching
+      run: cd build && ./searching
     - name: Run graphs
-      run: ./graphs
+      run: cd build && ./graphs
 
