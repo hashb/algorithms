@@ -9,9 +9,16 @@ jobs:
     
     steps:
     - uses: actions/checkout@master
-    - name: configure
-      run: ./configure
+    - name: setup
+      run: mkdir build; cd build
+    - name: cmake
+      run: cmake ..
     - name: make
       run: make
-    - name: make test
-      run: make test
+    - name: Run sorting
+      run: ./sorting
+    - name: Run searching
+      run: ./searching
+    - name: Run graphs
+      run: ./graphs
+
