@@ -16,7 +16,7 @@ jobs:
     - name: cmake
       run: cd build && cmake ..
     - name: make
-      run: make
+      run: cd build && make
     - name: Run sorting
       run: cd build && ./sorting
     - name: Run searching
