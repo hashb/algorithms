@@ -11,6 +11,8 @@ jobs:
     - uses: actions/checkout@master
     - name: setup
       run: mkdir build; cd build
+    - name: debug
+      run: ls -lah
     - name: cmake
       run: cmake ..
     - name: make
